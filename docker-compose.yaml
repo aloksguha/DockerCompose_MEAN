@@ -1,0 +1,20 @@
+version : '3.3'
+
+services:
+  todo-mongo-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  todo-express-server:
+    build: server
+    ports:
+      - "3000:3000"
+    links:
+      - todo-mongo-db
+
+  todo-ang4-client:
+    build: todo-app
+    ports:
+      - "4200:4200"
+

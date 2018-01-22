@@ -1,0 +1,29 @@
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-dark">
+  <a class="navbar-brand" href="#">
+    <!-- <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+    <span style="color :antiquewhite">ToDo App</span>
+  </a>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Add a todo</h1>
+    <p class="lead">
+        <input 
+        placeholder="Add a todo" 
+        autofocus="" 
+        [(ngModel)]="newTodo.desc" 
+        (keyup.enter)="addTodo()">
+    </p>
+  </div>
+</div>
+<div class="container">
+    <div class="card" *ngFor="let todo of todos">
+        <div class="card-body">
+          <span style="float: left"><input type="checkbox" [checked]="todo.isCompleted" (change)=updateTodo(todo._id)></span>
+          <span style="float: left; padding-left: 20px">{{todo.desc}}</span>
+          <span style="float: right"><input type="button" value="Delete" (click)=deleteTodo(todo._id)></span>
+        </div>
+        
+      </div>
+</div>
